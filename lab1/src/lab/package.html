@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf8'>
+</head>
+<body>
+<p>
+The package contains the code for studying the Observer behavioral pattern.
+</p>
+
+<h2>Purpose</h2>
+<p>
+This lab has two purposes:
+</p>
+<ol>
+<li>To get familiar with the <a href="http://www.eclipse.org/">Eclipse</a> Integrated Development Environment (IDE) and
+<li>To get a rough idea of what a design pattern is.
+</li>
+</ol>
+
+<h2>Theoretical Background</h2>
+<p>
+In this lab, we shall model the movement of a <a href="http://en.wikipedia.org/wiki/Double_star" target="blank">double star</a> subject to Newton's laws.
+To this end, we shall operate with two concepts: the model and view.
+</p>
+
+<p>
+The model models the movement of the two stars.
+It is a piece of software that computes the coordinates of the two stars at time <i>t</i>, given the initial locations and speeds of the two stars at time 0.
+The model has no idea that the computed positions of the stars will be plotted.
+</p>
+
+<p>
+The view is a piece of software that draws the trajectories of the two stars and keeps track of their locations over time.
+The view, however, has no idea about the laws that govern the movement of the stars.
+</p>
+
+<p>
+This type of architecture is characterized by a high level of flexibility and an ease of reuse.
+For example, the same view could plot the trajectories of two crashing cars (we would change the model and keep the view), or the same movement of the double star could be shown as a list of coordinates (we would keep the model and change the view).
+</p>
+
+<h2>Assignments</h2>
+<h3>Assignment 1: Reading about Model-View-Controller</h3>
+<p>
+In order to understand more of this model-view story, please read Section 1.2 in Gamma's book and the Observer behavioural pattern (page 293).
+</p>
+
+<h3>Assignment 2: Configuring Eclipse</h3>
+<p>
+First, let us load the latest Java SDK.
+Check if it is already loaded by typing in a terminal:
+</p>
+<p><code>module list</code></p>
+<p>
+Look for <code>prog/jdk/5.0</code> or <code>prog/j2sdk/5.0</code>.
+If you have an older version, unload it:
+</p>
+<p><code>module unload prog/j2sdk/&lt;old version number&gt;</code><p>
+<p>Load now the latest Java SDK:</p>
+<p><code>module load prog/jdk/5.0</code></p>
+<p>Check if you have the Eclipse module loaded:</p>
+<p><code>module list</code></p>
+<p>See if <code>prog/eclipse/&lt;version number&gt;</code> is in the list.</p>
+<p>
+If Eclipse does not appear in your list of the loaded modules, load it by issuing the following command in the terminal:
+</p>
+<p>
+<code>module load prog/eclipse</code><br>
+<code>module initadd prog/eclipse</code><br>
+<p>Now you are ready to start Eclipse. Type:<p>
+<p><code>eclipse &amp;</code></p>
+
+<p>
+Eclipse will ask you for a workspace directory.
+You might want to create a separate directory in your home directory and use it across all the labs.
+In what follows, we shall assume that this folder is called <code>TDDB84</code>.
+</p>
+
+<p>
+Eclipse has several "perspectives," C/C++ and Java being two of them.
+If Java is not already the default perspective, please change it from the <code>Window-&gt;Open Perspective</code> menu.
+</p>
+
+<h4>Assignment 3: Configuring the Project</h4>
+<p>
+Now we need to create a project for the lab in your workspace.
+This step will be needed for the other labs as well.
+Therefore, you might want to refer to the description given below when you start working on the second, third, fourth, and fifth labs.
+</p>
+
+<p>
+A skeleton of the project has already been created for you and can be downloaded from the <a href="http://www.ida.liu.se/~TDDB84/laboratories/laboratories.en.shtml" target="blank">web page</a> of the labs (click "Source code" next to "Lab1").
+You will get a zip archive, which you need to extract into your workspace directory, i.e., into <code>~/TDDB84</code>.
+Having done so, you should obtain a subdirectory called <code>lab1</code> in <code>TDDB84</code>; the full path is then <code>~/TDDB84/lab1</code>.
+</p>
+
+<p>
+The <code>lab1</code> directory contains two nested directories, namely, <code>doc</code> and <code>src</code>.
+It also contains two hidden files needed for Eclipse to recognize <code>lab1</code> is a Java project.
+The <code>doc</code> directory can be used to view offline the documentation that you are currently reading; to this end, open <code>doc/index.html</code> in your favorite browser.
+The <code>src</code> directory contains a Java package called <code>lab</code> with the corresponding source files (*.java).
+</p>
+
+<p>
+Go back to Eclipse and navigate to <code>File-&gt;Import...</code> in the main menu.
+Choose "Existing Projects into Workspace" under "General" and click "Next."
+Set the root directory of the project to the <code>lab1</code> directory, which we extracted earlier into <code>TDDB84</code>, and click "Finish."
+The project <code>lab1</code> appears now in the Package Explorer and already contains one Java package called <code>lab</code>.
+We shall adhere this naming scheme across all the labs.
+</p>
+
+<p>
+Now we shall attempt to run our applet from Eclipse.
+In this lab, the main source file (i.e., the one that contains a runnable Java applet) is called <code>Main.java</code>; in the future labs, such a file to run will have "Applet" in its name.
+Right click on <code>Main.java</code> in the Package Explorer and select <code>Run As-&gt;Java Applet</code>.
+An applet window should pop up now.
+However, nothing else should happen.
+This is because the code is incomplete; the Subject-Observer pattern has not been implemented yet.
+</p>
+
+<h4>Assignment 4: Completing the Observer Pattern Implementation</h4>
+<p>
+Your task now is to complete the implementation of the project.
+To this end, you should modify <code>Model.java</code> and <code>View.java</code> in several places that are marked with
+</p>
+<p><code>// YOUR CODE HERE</code></p>
+<p>
+To edit a file in Eclipse, double click on its name in the Package Explorer.
+If you complete the implementation correctly, you should be able to see in the applet window two intersecting circles with two dots spinning around the circles.
+</p>
+
+<p>
+Of great help will be the class diagram in Gamma's book at the "Observer Behavioural Pattern" section (starting from page 293), and the <a href="http://java.sun.com/j2se/1.5.0/docs/api/">Java API documentation</a> of the <code>java.util.Observable</code> class and <code>java.util.Observer</code> interface.
+</p>
+</body>
+</html>
