@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf8'>
+</head>
+<body>
+<p>
+The package contains the code for studying the Factory, Builder, and Prototype creational patterns.
+</p>
+
+<h2>Introduction</h2>
+<p>
+In this lab, a number of rooms, doors, and walls are combined into a <a href="http://en.wikipedia.org/wiki/Stable" target="blank">stable</a> using three different creational design patterns.
+The class that represents the stable is called <code>Stable</code>.
+The stable is composed of a number of rooms, each room is composed of four sides, and each side can be of various classes such as doors and walls.
+Each side class is a subclass of <code>MapSite</code>; please refer to GoF.
+</p>
+<p>
+The constructor of a room (the <code>Room</code> class) takes an X coordinate and a Y coordinate defining where the room should be placed in the stable.
+The constructor of a door (the <code>Door</code> and <code>BoxDoor</code> classes) takes two rooms that the door should connect.
+The constructor of a wall (the <code>Wall</code> class) takes a direction that the wall should face in a room.
+</p>
+<p>
+Be careful when you construct the stable: the last added side in a direction in a room replaces the old side in that direction in that room.
+You can create different stables for different creational design patterns studied in this lab.
+Alternatively, you can use only one layout for all the patterns.
+In either way, your stable is required to have:
+</p>
+<ol>
+<li>two ordinary rooms, i.e., two rooms (<code>Room</code>) that have at least one ordinary door (<code>Door</code>) each and no box doors (<code>BoxDoor</code>);
+<li>five horseboxes, i.e., five rooms (<code>Room</code>) that have only one box door (<code>BoxDoor</code>) each and no ordinary doors (<code>Door</code>);
+<li>three rooms (<code>Room</code>) in a row that work like a corridor; and
+<li>walls (<code>Wall</code>) along the perimeter of the stable.
+</ol>
+
+<p>
+The different between an ordinary door (<code>Door</code>) and a box door (<code>BoxDoor</code>) is that a horse (<code>Horse</code>) in the stable can open box doors but cannot open ordinary doors.
+</p>
+
+<p>
+The Eclipse project for this lab can be set up in the same way as it was <a href="https://www.ida.liu.se/~TDDB84/labs/lab1/doc/" target="blank">described</a> with respect to the first lab.
+</p>
+
+<h2>Usage</h2>
+<ul>
+<li>Use the menu of the applet to switch between different construction methods.
+<li>Press the letter 'h' to add a horse into the stable.
+<li>Use the arrow keys to control the person represented by a helmet in the stable.
+<li>Press the enter key to open the door that is in front of the person.
+</ul>
+
+<h2>Purpose</h2>
+<p>
+By creating the stable using different creational patterns, you observe the strengths and weaknesses of these patterns, and, in the future, you will be able to choose the one that fits best in a given situation.
+</p>
+
+<h2>Section A</h2>
+<h3>Readings</h3>
+<p>
+The introduction to creational design patterns in GoF on pp. 81&ndash;85, the Factory Method pattern starting from p. 107, and the lectures.
+</p>
+
+<h3>Instructions</h3>
+<p>
+Construct a stable by means of the Factory Method pattern.
+Recall the requirements given earlier.
+</p>
+
+<p>
+Write the body of the <code>factoryConstruction</code> method in <code>StablePanel</code> and create one or two your own classes.
+</p>
+
+<h3>Hints</h3>
+<p>
+Have a look at <code>defaultConstruction</code> in <code>StablePanel</code> in order to see how the classes representing various parts of a stable (i.e., rooms, doors, box doors, and walls) are utilized there.
+Your <code>factoryConstruction</code> should look similar, but, instead of instantiating these classes directly, it should call the corresponding methods of your factory.
+Therefore, your factory should be able to produce rooms, doors, box doors, and walls.
+</p>
+
+<h2>Section B</h2>
+<h3>Readings</h3>
+<p>
+The chapter about the Builder pattern in GoF on pp. 97&ndash;107.
+</p>
+
+<h3>Instructions</h3>
+<p>
+Construct a stable by means of the Builder pattern.
+</p>
+
+<p>
+Write the body of the <code>builderConstruction</code> method in <code>StablePanel</code> and create one or two your own classes.
+</p>
+
+<h3>Hints</h3>
+<p>
+<code>Stable</code> is a singleton; adapt your Builder accordingly.
+</p>
+
+<h2>Section C</h2>
+<h3>Readings</h3>
+<p>
+The chapter about the Prototype pattern in GoF on pp. 117&ndash;126 and the lectures.
+</p>
+
+<h3>Instructions</h3>
+<p>
+Construct a stable by means of the Prototype pattern.
+Inspect the requirements on a stable once again and decide on suitable prototypes.
+</p>
+
+<p>
+Write the body of the <code>builderConstruction</code> method in <code>StablePanel</code> and create the class(es) needed for the Prototype pattern.
+</p>
+
+<h3>Hints</h3>
+<p>
+Think about how and who creates prototypes.
+Is a Singleton suitable for storing prototypes?
+</p>
+
+<h2>Hand In</h2>
+<p>
+Apart from explaining the details of your implementation and answering the questions of your lab assistant, you are required to hand in the classes that you have created and those that you have modified.
+To this end, provide your code with comments where it is needed, compress all the relevant classes (*.java only) into a single archive, and send this archive to the lab assistant.
+</p>
+</body>
+</html>
