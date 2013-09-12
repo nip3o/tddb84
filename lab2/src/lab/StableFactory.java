@@ -1,8 +1,6 @@
 package lab;
 
 public class StableFactory {
-	public enum DoorChoice { boxDoor, door }
-	
 	public MapSite getDoor(DoorChoice choice, Room r1, Room r2) {
 		switch (choice) {
 		case door:

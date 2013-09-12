@@ -6,9 +6,9 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import javax.swing.JPanel;
 
-import lab.StableFactory.DoorChoice;
 
 /**
  * This is the class where the students should make changes.
@@ -113,7 +113,7 @@ public class StablePanel extends JPanel {
 	public void factoryConstruction() {
 		StableFactory f = new StableFactory();
 		
-		Room room1 = f.getRoom(0, 0);
+		Room room1 = f.getRoom(0,0);
 		Room room2 = f.getRoom(1,0);
 		Room room3 = f.getRoom(0,1);
 		Room room4 = f.getRoom(1,1);
@@ -156,8 +156,18 @@ public class StablePanel extends JPanel {
 	 * Construction using the Builder pattern.
 	 */
 	public void builderConstruction() {
-
-		// YOUR CODE HERE
+		StableBuilder b = new StableBuilder();
+		
+		b.addRoom(0, 0);
+		b.addRoom(1, 0);
+		b.addRoom(0, 1);
+		b.addRoom(1, 1);
+		
+		b.addDoor(0, 0, 0, 1, DoorChoice.door);
+		b.addDoor(1, 0, 1, 1, DoorChoice.boxDoor);
+		b.addDoor(0, 1, 1, 1, DoorChoice.boxDoor);
+		
+		b.addOuterDoors();
 	}
 
 	/**
