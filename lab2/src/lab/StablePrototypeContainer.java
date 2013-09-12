@@ -21,23 +21,30 @@ public class StablePrototypeContainer {
 		return instance;
 	}
 	
-	
 	public MapSite getDoor(DoorChoice choice, Room r1, Room r2) {
 		switch (choice) {
 		case door:
-			return door.clone();
+			Door newDoor = (Door) door.clone();
+			newDoor.move(r1, r2);
+			return newDoor;
 		case boxDoor:
-			return boxDoor.clone();
+			BoxDoor newBoxDoor = (BoxDoor) boxDoor.clone();
+			newBoxDoor.move(r1, r2);
+			return newBoxDoor;
 		default:
 			return null;
 		}
 	}
 	
-	public MapSite getWall() {
-		return wall.clone();
+	public Wall getWall(int direction) {
+		Wall newWall = (Wall) wall.clone();
+		newWall.orientate(direction);
+		return newWall;
 	}
 	
-	public MapSite getRoom() {
-		return room.clone();
+	public Room getRoom(int x, int y) {
+		Room newRoom = (Room) room.clone();
+		newRoom.move(x, y);
+		return newRoom;
 	}
 }

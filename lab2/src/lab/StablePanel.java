@@ -174,8 +174,45 @@ public class StablePanel extends JPanel {
 	 * Construction using prototypes.
 	 */
 	public void prototypeConstruction() {
+		StablePrototypeContainer c = StablePrototypeContainer.instance();
+		
+		Room room1 = c.getRoom(0,0);
+		Room room2 = c.getRoom(1,0);
+		Room room3 = c.getRoom(0,1);
+		Room room4 = c.getRoom(1,1);
 
-		// YOUR CODE HERE
+		MapSite door13 = c.getDoor(DoorChoice.door, room1, room3);
+		MapSite boxDoor24 = c.getDoor(DoorChoice.boxDoor, room2, room4);
+		MapSite boxDoor34 = c.getDoor(DoorChoice.boxDoor, room3, room4);
+
+		Stable.instance().addRoom(room1);
+		Stable.instance().addRoom(room4);
+		Stable.instance().addRoom(room3);
+		Stable.instance().addRoom(room2);
+
+		room1.setSide(c.getWall(KeyEvent.VK_UP));
+		room1.setSide(c.getWall(KeyEvent.VK_LEFT));
+
+		room2.setSide(c.getWall(KeyEvent.VK_UP));
+		room2.setSide(c.getWall(KeyEvent.VK_RIGHT));
+
+		room3.setSide(c.getWall(KeyEvent.VK_DOWN));
+		room3.setSide(c.getWall(KeyEvent.VK_LEFT));
+
+		room4.setSide(c.getWall(KeyEvent.VK_RIGHT));
+		room4.setSide(c.getWall(KeyEvent.VK_DOWN));
+
+		room1.setSide(room2);
+		room2.setSide(room1);
+
+		room1.setSide(door13);
+		room3.setSide(door13);
+
+		room2.setSide(boxDoor24);
+		room4.setSide(boxDoor24);
+
+		room3.setSide(boxDoor34);
+		room4.setSide(boxDoor34);
 	}
 
 	public void deconstruct() {
