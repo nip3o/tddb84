@@ -16,6 +16,7 @@ import java.util.Observer;
 class View extends Canvas implements Observer {
 // END OF YOUR CODE
 
+
 	private static final long serialVersionUID = 1L;
 	protected int width, height;
 	protected static final int DFLT_WIDTH  = 300;
