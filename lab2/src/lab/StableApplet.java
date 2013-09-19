@@ -24,7 +24,7 @@ public class StableApplet extends JApplet implements ActionListener, KeyListener
 	 */
 	public void init() {
 
-		this.setSize(400, 400);
+		this.setSize(800, 600);
 
 		makeMenu();
 
