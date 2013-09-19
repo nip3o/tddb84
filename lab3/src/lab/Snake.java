@@ -45,7 +45,7 @@ public class Snake implements Runnable {
 		lock = new ReentrantLock();
 
 		setOriginalGraphics();
-
+		
 		body = new ArrayList<Rectangle>();
 		bonus = new ArrayList<Rectangle>();
 
@@ -161,6 +161,8 @@ public class Snake implements Runnable {
 		// YOUR CODE HERE
 		// Create the new controller, set the old direction to
 		// the new controller.
+		controller = new ControllerKey();
+		direction = controller.getDirection();
 	}
 
 	/**
@@ -197,6 +199,8 @@ public class Snake implements Runnable {
 		// Create the new renderer.
 		// Initialize the color of the snake.
 		// Otherwise, it is null and you'll get a NullPointerException.
+		renderer = new Graphics3DAdapter();
+		renderer.setSnakeColor(Color.blue);
 	}
 
 	/**
@@ -211,6 +215,8 @@ public class Snake implements Runnable {
 		// Create the new renderer.
 		// Initialize the color of the snake.
 		// Otherwise, it is null and you'll get a NullPointerException.
+		renderer = new ABCFacade();
+		renderer.setSnakeColor(Color.blue);
 	}
 
 	/**
@@ -223,5 +229,7 @@ public class Snake implements Runnable {
 		// Create the new renderer.
 		// Initialize the color of the snake.
 		// Otherwise, it is null and you'll get a NullPointerException.
+		renderer = new Decorator(new Graphics3DAdapter());
+		renderer.setSnakeColor(Color.blue);
 	}
 }
