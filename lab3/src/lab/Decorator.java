@@ -6,7 +6,15 @@ import java.util.AbstractList;
 import java.util.Iterator;
 
 // YOUR CODE HERE
-// extends? implements?
+
+/*
+ * For this part, the task is to add the functionality of shadow-drawing to
+ * other classes. We chose the Decorator pattern for this, since it allows
+ * us to use the renderers just like before, but extend their functionality.
+ * It also allows us to add more functionality by implementing new decorator
+ * classes in the future.
+ */
+
 class Decorator implements Renderer {
 
 	private Renderer decorated;

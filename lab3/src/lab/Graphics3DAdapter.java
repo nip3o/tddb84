@@ -6,6 +6,14 @@ import java.util.AbstractList;
 import java.util.Iterator;
 
 // YOUR CODE HERE
+
+/*
+ * In this task, we want to replace the interface each graphics module, with a common
+ * interface for all renderers. This is a typical use-case of the Adapter pattern,
+ * since we want to completely replace the old interface of one or multiple classes
+ * with a new interface.
+ */
+
 class Graphics3DAdapter extends AbstractGraphics {
 	Graphics3D graphics = new Graphics3D();
 

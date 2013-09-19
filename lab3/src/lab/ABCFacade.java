@@ -5,7 +5,13 @@ import java.util.AbstractList;
 import java.util.ArrayList;
 
 // YOUR CODE HERE
-// Extends? Implements?
+
+/*
+ * In this task, the purpose is to create an interface that contains the functionality
+ * of all our three classes. We want to add this as a new interface, not replacing the old
+ * one, so the Facade pattern fits perfectly for this.
+ */
+
 public class ABCFacade extends AbstractGraphics {
 	private ModuleA a;
 	private ModuleB b;

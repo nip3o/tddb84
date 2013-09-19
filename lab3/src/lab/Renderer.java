@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import java.util.AbstractList;
 
 interface Renderer {
-
 	public void putBackground();
 	public void putBody(AbstractList<Rectangle> body);
 	public void setSnakeColor(Color color);
