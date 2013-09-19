@@ -268,44 +268,84 @@ public class StablePanel extends JPanel {
 	 */
 	public void prototypeConstruction() {
 		StablePrototypeContainer c = StablePrototypeContainer.instance();
-		
-		Room room1 = c.getRoom(0,0);
-		Room room2 = c.getRoom(1,0);
-		Room room3 = c.getRoom(0,1);
-		Room room4 = c.getRoom(1,1);
 
-		MapSite door13 = c.getDoor(DoorChoice.door, room1, room3);
-		MapSite boxDoor24 = c.getDoor(DoorChoice.boxDoor, room2, room4);
-		MapSite boxDoor34 = c.getDoor(DoorChoice.boxDoor, room3, room4);
-
-		Stable.instance().addRoom(room1);
-		Stable.instance().addRoom(room4);
-		Stable.instance().addRoom(room3);
-		Stable.instance().addRoom(room2);
-
-		room1.setSide(c.getWall(KeyEvent.VK_UP));
-		room1.setSide(c.getWall(KeyEvent.VK_LEFT));
-
-		room2.setSide(c.getWall(KeyEvent.VK_UP));
-		room2.setSide(c.getWall(KeyEvent.VK_RIGHT));
-
-		room3.setSide(c.getWall(KeyEvent.VK_DOWN));
-		room3.setSide(c.getWall(KeyEvent.VK_LEFT));
-
-		room4.setSide(c.getWall(KeyEvent.VK_RIGHT));
-		room4.setSide(c.getWall(KeyEvent.VK_DOWN));
-
-		room1.setSide(room2);
-		room2.setSide(room1);
-
-		room1.setSide(door13);
-		room3.setSide(door13);
-
-		room2.setSide(boxDoor24);
-		room4.setSide(boxDoor24);
-
-		room3.setSide(boxDoor34);
-		room4.setSide(boxDoor34);
+        Room room01 = c.getRoom(0,1);
+        Room room11 = c.getRoom(1,1);
+        Room room21 = c.getRoom(2,1);
+        Room room31 = c.getRoom(3,1);
+        Room room41 = c.getRoom(4,1);
+        Room room30 = c.getRoom(3,0);
+        Room room40 = c.getRoom(4,0);
+        Room room22 = c.getRoom(2,2);
+        Room room32 = c.getRoom(3,2);
+        Room room42 = c.getRoom(4,2);
+        
+        Stable.instance().addRoom(room01);
+        Stable.instance().addRoom(room11);
+        Stable.instance().addRoom(room21);
+        Stable.instance().addRoom(room31);
+        Stable.instance().addRoom(room41);
+        Stable.instance().addRoom(room30);
+        Stable.instance().addRoom(room40);
+        Stable.instance().addRoom(room22);
+        Stable.instance().addRoom(room32);
+        Stable.instance().addRoom(room42);
+        
+        // Outer walls
+        room01.setSide(c.getWall(KeyEvent.VK_UP));
+        room01.setSide(c.getWall(KeyEvent.VK_DOWN));
+        room01.setSide(c.getWall(KeyEvent.VK_LEFT));
+        room11.setSide(c.getWall(KeyEvent.VK_UP));
+        room11.setSide(c.getWall(KeyEvent.VK_DOWN));
+        room21.setSide(c.getWall(KeyEvent.VK_UP));
+        room30.setSide(c.getWall(KeyEvent.VK_LEFT));
+        room30.setSide(c.getWall(KeyEvent.VK_UP));
+        room40.setSide(c.getWall(KeyEvent.VK_UP));
+        room40.setSide(c.getWall(KeyEvent.VK_RIGHT));
+        room41.setSide(c.getWall(KeyEvent.VK_RIGHT));
+        room42.setSide(c.getWall(KeyEvent.VK_RIGHT));
+        room42.setSide(c.getWall(KeyEvent.VK_DOWN));
+        room32.setSide(c.getWall(KeyEvent.VK_DOWN));
+        room22.setSide(c.getWall(KeyEvent.VK_DOWN));
+        room22.setSide(c.getWall(KeyEvent.VK_LEFT));
+        
+        // Box walls
+        room30.setSide(c.getWall(KeyEvent.VK_RIGHT));
+        room40.setSide(c.getWall(KeyEvent.VK_LEFT));
+        room22.setSide(c.getWall(KeyEvent.VK_RIGHT));
+        room32.setSide(c.getWall(KeyEvent.VK_LEFT));
+        room32.setSide(c.getWall(KeyEvent.VK_RIGHT));
+        room42.setSide(c.getWall(KeyEvent.VK_LEFT));
+        
+        // Create doors
+        MapSite door0111 = c.getDoor(DoorChoice.door, room01, room11);      
+        MapSite door2122 = c.getDoor(DoorChoice.boxDoor, room21, room22);
+        MapSite door3132 = c.getDoor(DoorChoice.boxDoor, room31, room32);
+        MapSite door3130 = c.getDoor(DoorChoice.boxDoor, room31, room30);
+        MapSite door4142 = c.getDoor(DoorChoice.boxDoor, room41, room42);
+        MapSite door4140 = c.getDoor(DoorChoice.boxDoor, room41, room40);
+        
+        // Link doors
+        room01.setSide(door0111);
+        room11.setSide(door0111);
+        room21.setSide(door2122);
+        room22.setSide(door2122);
+        room31.setSide(door3132);
+        room32.setSide(door3132);
+        room31.setSide(door3130);
+        room30.setSide(door3130);
+        room41.setSide(door4142);
+        room42.setSide(door4142);
+        room41.setSide(door4140);
+        room40.setSide(door4140);
+        
+        // Link rooms
+        room11.setSide(room21);
+        room21.setSide(room11);
+        room21.setSide(room31);
+        room31.setSide(room21);
+        room31.setSide(room41);
+        room41.setSide(room31);
 	}
 
 	public void deconstruct() {
