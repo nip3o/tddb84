@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf8'>
+</head>
+<body>
+<p>
+The package contains the code for studying a number of structural patterns.
+</p>
+
+<h2>Introduction</h2>
+<p>
+In this lab, you will make the graphics of a snake game flexible by using structural design patterns.
+The game will be extended with graphical modules that you will make usable.
+In the beginning of every section you must write a short text, about 2&ndash;5 sentences, explaining your choice of design pattern.
+Ask your lab assistant if you cannot find a design pattern that fits.
+The graphical modules are constructed so that it will take some thinking to make them usable in the game.
+</p>
+
+<p>
+The Eclipse project for this lab can be set up in the same way as it was <a href="https://www.ida.liu.se/~TDDB84/labs/lab1/doc/" target="blank">described</a> with respect to the first lab.
+As before, you are supposed to complete the implementation of the project by filling in the gaps marked with</p>
+<p><code>// YOUR CODE HERE</code></p>
+<p>in the source files.</p>
+
+<h2>Usage</h2>
+<p>
+The snake can either be controlled by the arrow keys on the keyboard or by an automatic demo controller.
+There are also several possible graphical modules to use for displaying the snake, background, and bonuses.
+</p>
+
+<h2>Purpose</h2>
+<p>
+The purpose is to learn how to code with structural patterns and choose from a pattern dictionary the pattern most suited in a given situation.
+</p>
+
+<h2>Readings</h2>
+<p>The chapters on structural design patterns in GoF on p. 137&ndash;217.
+</p>
+
+<h2>Assignments</h2>
+<p>
+First, make <code>ControllerKey</code> usable.
+Edit <code>setKeyControll</code> in <code>Snake.java</code>.
+</p>
+
+<p>
+Second, <code>Renderer</code> is a common interface of all Graphics modules.
+<code>Graphics3D</code> has totally different method names than the <code>Renderer</code> interface.
+Therefore it needs to be <em>adapted</em> (hint intended).
+</p>
+
+<p>
+Third, <code>ModuleA</code>, <code>ModuleB</code>, and <code>ModuleC</code> have the functionality for displaying a background, snake, and bonus, but they have totally different interfaces than the <code>Renderer</code>.
+Moreover, each module does one thing, but you need one object that can do all three things.
+Hint: Fa&ccedil;ade?
+</p>
+
+<p>
+Fourth, <em>decorate</em> (subtle hint!) a renderer such that you can display the shadow of the snake and of the bonus.
+The shadow applies to the current renderer, regardless if it is the original, 3D, or ABC.
+</p>
+
+<h2>Hand In</h2>
+<p>
+Apart from explaining the details of your implementation and answering the questions of your lab assistant, you are required to hand in the classes that you have created and those that you have modified.
+To this end, provide your code with comments where it is needed, compress all the relevant classes (*.java only) into a single archive, and send this archive to the lab assistant.
+</p>
+</body>
+</html>
