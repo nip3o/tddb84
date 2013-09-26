@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf8'>
+</head>
+<body>
+<p>
+This package contains the code for studying a number of behavioral patterns.
+</p>
+
+<h2>Introduction</h2>
+<p>
+In this lab, the user can add various geometric shapes onto the canvas of the applet by choosing them from the menu.
+A shape on the canvas can be selected by a mouse click, and this selection will be signified by a white border around the shape.
+Several shapes can be selected simultaneously by holding the control key and clicking on the desired shapes.
+When a shape of the type <code>Square</code> (such shapes have gray backgrounds) is selected, new shapes will be added inside that square shape.
+</p>
+
+<p>
+In order to make some test shapes, use <code>Function-&gt;Make test</code> in the menu.
+</p>
+
+<p>
+Pay your attention the shapes that can be created using the <code>Box</code> menu option corresponding to the <code>SquareProxy</code> class.
+Each such shape can be either in the open state or in the closed state.
+The background of the shape is orange in the first case and black in the second case.
+You can switch between the two states by successively clicking on the shape.
+Since the implementation of <code>SquareProxy</code> is incomplete, do not expect anything else right now from <code>Box</code> shapes; you will develop their functionality in Section D and Section E.
+</p>
+
+<h2>Purpose</h2>
+<p>
+The purpose of the lab is to get an insight into how different patterns from different categories can exist together.
+In addition, you should learn how to recognize various patterns in a given source code.
+</p>
+
+<h2>Section A</h2>
+<h3>Readings</h3>
+<p>
+The chapters about behavioral patterns chapters in GoF on pp. 221&ndash;344 and the lectures about such patterns and roll modeling.
+</p>
+
+<h3>Instructions</h3>
+<p>
+Go through the source code and identify at least three different design patterns.
+The only requirement is that one of the identified patterns should be the pattern that the relationship between the shapes is based on.
+Get ready to answer the lab assistant's questions regarding how and why these patterns are utilized.
+Pay your particular attention to what classes play what roles in the patterns.
+</p>
+
+<h3>Hints</h3>
+<p>
+Look at the names of the methods in the source code.
+</p>
+
+<h2>Section B</h2>
+<h3>Readings</h3>
+<p>
+The chapter about the Chain-of-Responsibility pattern in GoF on pp. 223&ndash;232  and the lectures.
+</p>
+
+<h3>Instructions</h3>
+<p>
+A newly added shape obtains a random position and size within the area of its parent (which is an instance of <code>Square</code>).
+Consequently, two shapes that belong to the same parent can arbitrary overlap.
+Use the Chain-of-Responsibility pattern to prevent this behavior.
+To this end, the position and size for each new shape should be adjusted to avoid collisions with the other shapes already attached to the parent of the new shape.
+For simplicity, it is assumed that each shape has a "bounding rectangle," and any two of such rectangles should not overlap.
+</p>
+
+<p>
+Make changes in <code>AbstractShape</code> and in <code>ShapeFactory</code>.
+</p>
+
+<h3>Hints</h3>
+<p>
+Utilize the <code>removeOverlap</code> method to resolve collisions.
+</p>
+
+<h2>Section C</h2>
+<h3>Readings</h3>
+<p>
+The chapters about the Iterator and Visitor patterns in GoF on pp. 257&ndash;271 and 331&ndash;344, respectively.
+</p>
+
+<h3>Instructions</h3>
+<p>
+Change the code so that shapes can be drawn using an Iterator and a Visitor.
+There is a menu item that allows one to choose the method used for drawing.
+</p>
+
+<p>
+Create your own classes inheriting <code>AbstractIterator</code> and <code>AbstractVisitor</code> and then complete the <code>paint</code> method of <code>ShapePanel</code> in order to take these new classes into account.
+</p>
+
+<p>
+As noted earlier, at this stage, you might have problems with drawing <code>Box</code> shapes (the <code>SquareProxy</code> class).
+The reason for this is that <code>SquareProxy</code> is incomplete, and you will address this issue in the next two parts of this lab.
+</p>
+
+<h3>Hints</h3>
+<p>
+Use the <code>getListOfShapes</code> method of the root shape in order to get a list of shapes to iterate over.
+</p>
+
+<h2>Section D</h2>
+<h3>Readings</h3>
+<p>
+The chapter about the Proxy pattern in GoF on pp. 207&ndash;217.
+</p>
+
+<h3>Instructions</h3>
+<p>
+In the provided source code, the <code>SquareProxy</code> class is almost empty.
+The assignment in this section is to make it work as a proxy for a <code>Square</code>.
+A proxy can be either open or closed, and you can change it by clicking on the proxy.
+An open proxy should behave and look just like a <code>Square</code>, including the possibility of adding new shapes inside of it.
+A closed proxy should be a black square with no content inside (all the inner shapes should be hidden until the proxy is opened).
+</p>
+
+<p>
+Inspect <code>SquareProxy</code> and complete its implementation.
+Other parts of the source code might also need your attention.
+</p>
+
+<h3>Hints</h3>
+<p>
+The entire interfaces of the abstract classes <code>AbstractShape</code> and <code>AbstractSquare</code> should be fulfilled by the proxy.
+</p>
+
+<h2>Section E</h2>
+<h3>Instructions</h3>
+<p>
+If it has not already been done in Section D, change your visitor(s) and iterator(s) so that they can work with <code>SquareProxy</code>.
+Think wheather <code>AbstractIterator</code> and/or <code>AbstractVisitor</code> should be modified in order to take <code>SquareProxy</code> into account.
+</p>
+
+<p>
+Create an Iterator and a Visitor that count the total number of shapes on the canvas.
+Make sure that the shapes in closed proxies are not counted.
+There is a menu item that allows one to display the total number of shapes on the canvas using different counting methods.
+</p>
+
+<p>
+Write a short text of 5&ndash;10 sentences about how the Iterator and Visitor patterns behaved when a new class (i.e., <code>SquareProxy</code>) was added and when a new feature (i.e., counting) was added.
+</p>
+
+<h2>Hand In</h2>
+<p>
+Apart from explaining the details of your implementation and answering the questions of your lab assistant, you are required to hand in the classes that you have created and those that you have modified.
+To this end, provide your code with comments where it is needed, compress all the relevant classes (*.java only) into a single archive, and send this archive to the lab assistant.
+</p>
+</body>
+</html>
