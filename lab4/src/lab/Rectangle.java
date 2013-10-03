@@ -33,7 +33,7 @@ public class Rectangle extends AbstractShape {
 	 * Draws the rectangle.
 	 */
 	public void paint(Graphics g) {
-
+		System.out.print("Painted rectangle");
 		g.setColor(Color.blue);
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 	}

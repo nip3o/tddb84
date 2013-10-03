@@ -46,10 +46,20 @@ public class ShapePanel extends JPanel {
 		} else if (paintVisitor) {
 			// YOUR CODE HERE
 			// Place the code to draw with the Visitor.
+			
+			
 			// END OF YOUR CODE
 		} else if (paintIterator) {
 			// YOUR CODE HERE
 			// Place the code to draw with the Iterator.
+			
+			root.paint(g);
+			ShapeIterator i = new ShapeIterator(root);
+			while(!i.isDone()) {
+				AbstractShape shape = i.currentItem();
+				shape.paint(g);
+				i.next();
+			}
 			// END OF YOUR CODE
 		}
 
