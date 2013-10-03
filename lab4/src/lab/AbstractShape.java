@@ -35,7 +35,17 @@ abstract public class AbstractShape {
 	// removeOverlap is private and should stay private.
 	// You might want to implement a supplementary public method
 	// in order to facilitate the corresponding design pattern.
+	
+	public void handleOverlap(Rectangle r) {
+		removeOverlap(r);
+		
+		if(sibling != null) {
+			sibling.handleOverlap(r);
+		}
+	}
+	
 	// END OF YOUR CODE
+
 
 	/**
 	 * Removes the overlap between this shape and the new shape by
