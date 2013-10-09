@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf8'>
+</head>
+<body>
+<p>
+This package contains the code for studying a number of behavioral patterns.
+</p>
+
+<h2>Introduction</h2>
+<p>
+In this lab, you will construct a ladybird farm.
+The key object is <code>LadyBirdManager</code>, which creates new ladybirds, changes those that are already in the farm (namely, their position, size, and color), and deletes ladybirds when it is requested by the user.
+<code>LadyBirdManager</code> is also responsible for drawing the farm on the canvas of the applet.
+Some parts of this functionality have not been activated/implemented yet, which you will fix in this lab.
+</p>
+
+<h2>Usage</h2>
+<p>
+When the implementation of the ladybird farm is completed, you should be able to control the farm from the keyboard as follows:
+</p>
+<ul>
+<li>press 'a' to add a new ladybird;
+<li>press 'r' to remove the marked ladybird;
+<li>press 'b' to make the marked ladybird bigger;
+<li>press 's' to make the marked ladybird smaller;
+<li>press 'c' to change the color of the marked ladybird; and
+<li>press 'u' to undo the previous operation.
+</ul>
+<p>
+A ladybird can be marked/selected by clicking on it with the mouse.
+In order to make the selected ladybird move, simply click on the canvas where it should go to.
+</p>
+
+<h2>Purpose</h2>
+<p>
+The purpose of the lab is to learn how to use certain design patterns in applications with GUIs.
+</p>
+
+<h2>Section A</h2>
+<h3>Readings</h3>
+<p>
+The chapter about the Command pattern in GoF on pp. 233&ndash;242.
+</p>
+
+<h3>Instructions</h3>
+<p>
+Inherit <code>AbstractCommand</code> and create the commands needed for adding and removing ladybirds.
+Edit <code>FarmApplet</code> to activate the new commands.
+Make it possible to undo both types of commands.
+</p>
+
+<p>
+Change the parts of <code>FarmApplet.java</code> that are marked with the usual invitation (focus on the add, remove, and undo commands for now):
+</p>
+<p><code>// YOUR CODE HERE</code></p>
+
+<h3>Hints</h3>
+<p>
+It might be tempting to use the remove command as an undo for the add command, but it is not how it should be done.
+</p>
+
+<h2>Section B</h2>
+<h3>Readings</h3>
+<p>
+The chapter about the State patter in GoF on pp. 305&ndash;313.
+</p>
+
+<h3>Instructions</h3>
+<p>
+Inherit <code>AbstractState</code> and create three states characterizing a ladybird: going, turning, and standing.
+Make sure that, when the action corresponding to the current state of a ladybird finishes, the state of the ladybird changes accordingly.
+For example, once a ladybird stops turning into the direction of the location where it should go to (we shall refer to this location as the goal), the state of the ladybird should change from turning to going.
+</p>
+<p>
+Create a move command that takes a goal position and makes the marked ladybird (a) turn to the goal; (b) go to the goal; and, once the goal has been reached, (c) stand still.
+</p>
+<p>
+Implement the missing parts of <code>FarmApplet.java</code> that are relevant to this section of the lab.
+</p>
+
+<h3>Hints</h3>
+<p>
+Use <code>setGoal</code> in <code>LadyBird</code> to guide ladybirds.
+</p>
+
+<h2>Section C</h2>
+<h3>Readings</h3>
+<p>
+The chapter about the Mediator pattern in GoF on pp. 273&ndash;282.
+</p>
+
+<h3>Instructions</h3>
+<p>
+When a ladybird moves towards a goal, it can overlap other ladybirds.
+This can be avoided by calling the <code>collide</code> method of the ladybird and passing to this method each of the other ladybirds on the canvas.
+This leads to the need for an all-to-all relationship between the ladybirds, which is not desirable.
+Bypass this relationship by introducing a Mediator so that the ladybirds can move without overlapping and without any all-to-all relationships.
+</p>
+<p>
+The parts of the source code that you should modify depend on how you implement your Mediator.
+</p>
+
+<h3>Hints</h3>
+<p>
+Make sure that the <code>collide</code> method of the ladybird which triggered the Mediator is never called.
+</p>
+
+<h2>Section D</h2>
+<h3>Readings</h3>
+<p>
+The chapter about the Observer pattern in GoF on pp. 293&ndash;303.
+</p>
+
+<h3>Instructions</h3>
+<p>
+Implement the commands needed for changing the size and color of the marked ladybird (and only the marked ladybird).
+</p>
+<p>
+Every ladybird has an instance of the <code>LadyBirdSettings</code> class that describes the size and color of the ladybird.
+Use the Observer pattern to synchronize the settings of all the ladybirds in the farm so that, whenever you change the size/color of the marked ladybird, the other ladybirds also attain the same size/color.
+</p>
+<p>
+The parts of the source code that you should modify depend on how you implement your Observer.
+Feel free to change <code>LadyBird</code> except for the <code>paint</code> method.
+</p>
+
+<h3>Hints</h3>
+<p>
+You might want to make the subject of the Observer pattern be a Singleton.
+</p>
+
+<h2>Hand In</h2>
+<p>
+Apart from explaining the details of your implementation and answering the questions of your lab assistant, you are required to hand in the classes that you have created and those that you have modified.
+To this end, provide your code with comments where it is needed, compress all the relevant classes (*.java only) into a single archive, and send this archive to the lab assistant.
+</p>
+
+</body>
+</html>
