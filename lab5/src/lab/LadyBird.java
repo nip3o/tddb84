@@ -22,9 +22,12 @@ public class LadyBird {
 
 	private AbstractState state;
 	private LadyBirdSettings settings;
+	
+	private LadybugStateTurning stateTurning;
+	private LadybugStateStanding stateStanding;
+	private LadybugStateGoing stateGoing;
 
-	public LadyBird() {
-
+	public LadyBird() {		
 		settings = new LadyBirdSettings(31, Color.red, Color.black);
 
 		x = (int)Math.round(Math.random() * 400);
@@ -34,6 +37,10 @@ public class LadyBird {
 
 		// YOUR CODE HERE
 		// You might want to add something here.
+		
+		stateTurning = new LadybugStateTurning();
+		stateStanding = new LadybugStateStanding();
+		stateGoing = new LadybugStateGoing();
 	}
 
 	// YOUR CODE HERE
@@ -45,7 +52,6 @@ public class LadyBird {
 	 * on which state it is in.
 	 */
 	public void nextAction() {
-
 		state.nextAction(this);
 	}
 
@@ -291,5 +297,17 @@ public class LadyBird {
 
 		goalX = x;
 		goalY = y;
+	}
+
+	public AbstractState getGoingState() {
+		return stateGoing;
+	}
+	
+	public AbstractState getTurningState() {
+		return stateTurning;
+	}
+	
+	public AbstractState getStandingState() {
+		return stateStanding;
 	}
 }

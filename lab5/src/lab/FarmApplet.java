@@ -88,6 +88,9 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 			} else {
 				// YOUR CODE HERE
 				// Write the code to move the marked ladybird.
+				LadyBird bug = manager.getMarkedLadyBird();
+				bug.setGoal(evt.getX(), evt.getY());
+				bug.setState(bug.getTurningState());
 				// END OF YOUR CODE
 			}
 		}
@@ -99,17 +102,17 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 	 * Creates commands depending on which key was pressed.
 	 */
 	public void keyPressed(KeyEvent evt) {
-
 		switch (evt.getKeyChar()) {
 		case 'a':
 			// YOUR CODE HERE
 			// Write the code to add a new ladybird.
+			this.addCommand(new AddLadybugCommand());
 			// END OF YOUR CODE
 			break;
 
 		case 'r':
 			// YOUR CODE HERE
-			// Write the code to remove the marked ladybird.
+			this.addCommand(new RemoveLadyBirdCommand());
 			// END OF YOUR CODE
 			break;
 
@@ -134,6 +137,7 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 		case 'u':
 			// YOUR CODE HERE
 			// Write the code to undo the last command.
+			this.undoCommand();
 			// END OF YOUR CODE
 			break;
 		}

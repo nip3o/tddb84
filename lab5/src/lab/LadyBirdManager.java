@@ -87,7 +87,7 @@ public class LadyBirdManager extends Thread {
 
 		LadyBird bird = new LadyBird();
 		ladyBirds.add(bird);
-
+		
 		// YOUR CODE HERE
 		// Add the code to remove overlaps at creation.
 		// END OF YOUR CODE
