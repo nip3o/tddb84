@@ -46,14 +46,15 @@ public class ShapePanel extends JPanel {
 		} else if (paintVisitor) {
 			// YOUR CODE HERE
 			// Place the code to draw with the Visitor.
-			
-			
+
+			ShapeVisitor v = new ShapeVisitor(g);
+			root.accept(v);
+	
 			// END OF YOUR CODE
 		} else if (paintIterator) {
 			// YOUR CODE HERE
 			// Place the code to draw with the Iterator.
 			
-			root.paint(g);
 			ShapeIterator i = new ShapeIterator(root);
 			while(!i.isDone()) {
 				AbstractShape shape = i.currentItem();
@@ -107,7 +108,9 @@ public class ShapePanel extends JPanel {
 		int totalNumber = 0;
 
 		// YOUR CODE HERE
-		// Place the code to count the shapes using the Visitor.
+		ShapeVisitor v = new ShapeVisitor();
+		root.accept(v);
+		totalNumber = v.getTotalNumber();
 		// END OF YOUR CODE
 
 		ShapeApplet.setOutputText(
@@ -123,6 +126,11 @@ public class ShapePanel extends JPanel {
 
 		// YOUR CODE HERE
 		// Place the code to count the shapes using the Iterator.
+		ShapeIterator i = new ShapeIterator(root);
+		while( !i.isDone() ) {
+			totalNumber++;
+			i.next();
+		}
 		// END OF YOUR CODE
 
 		ShapeApplet.setOutputText(

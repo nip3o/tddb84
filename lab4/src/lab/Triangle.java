@@ -47,7 +47,6 @@ public class Triangle extends AbstractShape {
 	 * Accepts a visitor.
 	 */
 	public void accept(AbstractVisitor v) {
-
 		v.visit(this);
 	}
 

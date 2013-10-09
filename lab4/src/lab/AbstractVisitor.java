@@ -10,7 +10,7 @@ public abstract class AbstractVisitor {
 	/**
 	 * Visits a square.
 	 */
-	public abstract void visit(Square s);
+	public abstract void visit(AbstractSquare s);
 
 	/**
 	 * Visits a rectangle.
@@ -29,4 +29,6 @@ public abstract class AbstractVisitor {
 
 	// YOUR CODE HERE
 	// May be something else should be added?
+	
+	// We changed Square -> AbstractSquare instead...
 }
