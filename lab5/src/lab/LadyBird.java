@@ -37,14 +37,25 @@ public class LadyBird {
 
 		// YOUR CODE HERE
 		// You might want to add something here.
-		
 		stateTurning = new LadybugStateTurning();
 		stateStanding = new LadybugStateStanding();
 		stateGoing = new LadybugStateGoing();
+		// END OF YOUR CODE
 	}
 
 	// YOUR CODE HERE
 	// You might want to add something here.
+	public AbstractState getGoingState() {
+		return stateGoing;
+	}
+	
+	public AbstractState getTurningState() {
+		return stateTurning;
+	}
+	
+	public AbstractState getStandingState() {
+		return stateStanding;
+	}
 	// END OF YOUR CODE
 
 	/**
@@ -297,17 +308,5 @@ public class LadyBird {
 
 		goalX = x;
 		goalY = y;
-	}
-
-	public AbstractState getGoingState() {
-		return stateGoing;
-	}
-	
-	public AbstractState getTurningState() {
-		return stateTurning;
-	}
-	
-	public AbstractState getStandingState() {
-		return stateStanding;
 	}
 }
