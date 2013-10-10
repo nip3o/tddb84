@@ -102,6 +102,9 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 	 * Creates commands depending on which key was pressed.
 	 */
 	public void keyPressed(KeyEvent evt) {
+		LadyBirdManager manager = LadyBirdManager.instance();
+		LadyBird bug;
+		
 		switch (evt.getKeyChar()) {
 		case 'a':
 			// YOUR CODE HERE
@@ -119,18 +122,24 @@ public class FarmApplet extends JApplet implements MouseListener, KeyListener {
 		case 'b':
 			// YOUR CODE HERE
 			// Write the code to make the marked ladybird bigger.
+			bug = manager.getMarkedLadyBird();
+			bug.setSize(bug.getSize() + 1);
 			// END OF YOUR CODE
 			break;
 
 		case 's':
 			// YOUR CODE HERE
 			// Write the code to make the marked ladybird smaller.
+			bug = manager.getMarkedLadyBird();
+			bug.setSize(bug.getSize() - 1);
 			// END OF YOUR CODE
 			break;
 
 		case 'c':
 			// YOUR CODE HERE
 			// Write the code to change to the color of the marked ladybird.
+			bug = manager.getMarkedLadyBird();
+			bug.setColors(Color.YELLOW, Color.BLACK);
 			// END OF YOUR CODE
 			break;
 

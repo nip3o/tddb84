@@ -21,10 +21,11 @@ public class LadyBirdManager extends Thread {
 	private LadyBird markedLadyBird;
 	private static JApplet applet;
 	private static LadyBirdManager instance;
+	private Mediator mediator;
 
 	private LadyBirdManager() {
-
 		ladyBirds = new Vector<LadyBird>();
+		mediator = new Mediator(ladyBirds);
 	}
 
 	/**
@@ -65,6 +66,8 @@ public class LadyBirdManager extends Thread {
 			Iterator<LadyBird> iterator = ladyBirds.iterator();
 			while (iterator.hasNext()) {
 				LadyBird bird = iterator.next();
+				
+				mediator.checkCollissions(bird);
 				bird.nextAction();
 			}
 
@@ -90,6 +93,7 @@ public class LadyBirdManager extends Thread {
 		
 		// YOUR CODE HERE
 		// Add the code to remove overlaps at creation.
+		mediator.checkCollissions(bird);
 		// END OF YOUR CODE
 
 		return bird;
@@ -115,9 +119,10 @@ public class LadyBirdManager extends Thread {
 	public void addLadyBird(LadyBird bird) {
 
 		ladyBirds.add(bird);
-
+		
 		// YOUR CODE HERE
 		// Add some code if needed.
+		bird.addObserver(mediator);
 	}
 
 	/**

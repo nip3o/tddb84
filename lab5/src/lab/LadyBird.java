@@ -5,13 +5,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
+import java.util.Observable;
 
 /**
  * The class representing a ladybird.
  *
  * @author Peter Sunnergren
  */
-public class LadyBird {
+public class LadyBird extends Observable {
 
 	private double angle = 0.0;
 	private int x;
@@ -56,6 +57,7 @@ public class LadyBird {
 	public AbstractState getStandingState() {
 		return stateStanding;
 	}
+	
 	// END OF YOUR CODE
 
 	/**
@@ -241,6 +243,8 @@ public class LadyBird {
 
 		// YOUR CODE HERE
 		// You might want to add something here.
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	/**
@@ -280,6 +284,8 @@ public class LadyBird {
 
 		// YOUR CODE HERE
 		// You might want to add something here.
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	/**
