@@ -3,23 +3,23 @@ package lab;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.AbstractList;
-import java.util.Vector;
 
 /**
- * This is the class where the students implements the proxy for the square.
+ * The SquareProxy acts as if it would have been a Square. It inherits from
+ * Square and reuses the Square behaviour when it is supposed to be the same
+ * (when the proxy is open) via super.someMethod() calls and provides a 
+ * separate behaviour when the proxy is closed.
  * 
- * @author Peter Sunnergren
+ * The methods 'getMarkedShape', 'paint', 'accept' and 'getListOfShapes' 
+ * provide new behaviour, while the other methods are redundant since they 
+ * call the same method of the base class, but they are included since they 
+ * were part of the template.
  */
-public class SquareProxy extends AbstractSquare {
-
+public class SquareProxy extends Square {
 	private boolean open = true;
-	protected Vector<AbstractShape> children;
 
 	// YOUR CODE HERE
 	// Any missing methods?
-	public SquareProxy() {
-		children = new Vector<AbstractShape>();
-	}
 	// END OF YOUR CODE
 
 	/**
@@ -56,28 +56,15 @@ public class SquareProxy extends AbstractSquare {
 	 * Draws the proxy.
 	 */
 	public void paint(Graphics g) {
-
 		if (open) {
-			// YOUR CODE HERE
-			// Any changes?
 			g.setColor(Color.orange);
 			g.fillRect(getX(), getY(), getWidth(), getHeight());
-			this.paintChildren(g);
+			// YOUR CODE HERE
+			paintChildren(g);
 			// END OF YOUR CODE
 		} else {
 			g.setColor(Color.black);
 			g.fillRect(getX(), getY(), getWidth(), getHeight());
-		}
-	}
-
-	/**
-	 * Draws the children of the proxy.
-	 */
-	public void paintChildren(Graphics g) {
-
-		// YOUR CODE HERE
-		for (AbstractShape child : children) {
-			child.paint(g);
 		}
 	}
 
@@ -87,38 +74,51 @@ public class SquareProxy extends AbstractSquare {
 	 */
 	public AbstractList<AbstractShape> getListOfShapes(
 			AbstractList<AbstractShape> list) {
-
 		// YOUR CODE HERE
-		list.add(this);
-
 		if (open) {
-			for (AbstractShape child : children) {
-				child.getListOfShapes(list);
-			}
+			super.getListOfShapes(list);
+		} else {
+			list.add(this);
 		}
 		// END OF YOUR CODE
-
 		return list;
 	}
-
+	
 	/**
 	 * Accepts a Visitor.
 	 */
 	public void accept(AbstractVisitor v) {
-		v.visit(this);
-
-		if(open) {
-			for (AbstractShape child : children) {
-				child.accept(v);
-			}
+		// YOUR CODE HERE
+		if (open) {
+			super.accept(v);
+		} else {
+			v.visit(this);
 		}
+		// END OF YOUR CODE
+	}
+	
+	/*
+	 * All the methods below can be removed since they call the same method
+	 * of the base class, but they are included since they were added in the
+	 * given template.
+	 */
+	
+	/**
+	 * Draws the children of the proxy.
+	 */
+	public void paintChildren(Graphics g) {
+		// YOUR CODE HERE
+		super.paintChildren(g);
+		// END OF YOUR CODE
 	}
 
 	/**
 	 * Adds a child.
 	 */
 	public void addChild(AbstractShape child) {
-		children.add(child);
+		// YOUR CODE HERE
+		super.addChild(child);
+		// END OF YOUR CODE
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class SquareProxy extends AbstractSquare {
 	 */
 	public boolean hasChildren() {
 		// YOUR CODE HERE
-		return children.size() > 0;
+		return super.hasChildren();
 		// END OF YOUR CODE
 	}
 
@@ -134,9 +134,8 @@ public class SquareProxy extends AbstractSquare {
 	 * Gets the last child in the list of children.
 	 */
 	public AbstractShape getLastChild() {
-
 		// YOUR CODE HERE
-		return children.lastElement();
+		return super.getLastChild();
 		// END OF YOUR CODE
 	}
 }

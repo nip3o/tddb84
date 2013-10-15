@@ -14,7 +14,7 @@ public class ShapeVisitor extends AbstractVisitor {
 	public ShapeVisitor() {}
 
 	@Override
-	public void visit(AbstractSquare s) {
+	public void visit(Square s) {
 		if(g != null) {
 			s.paint(g);
 		}
