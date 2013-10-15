@@ -89,11 +89,11 @@ public class LadyBirdManager extends Thread {
 	public LadyBird createLadyBird() {
 
 		LadyBird bird = new LadyBird();
-		ladyBirds.add(bird);
 		
 		// YOUR CODE HERE
 		// Add the code to remove overlaps at creation.
 		mediator.checkCollissions(bird);
+		this.addLadyBird(bird);
 		// END OF YOUR CODE
 
 		return bird;
