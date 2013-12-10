@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml level="2" metaid="_770249" version="4">
+    <model id="Huang1996_MAPK_ultrasens" metaid="_000001" name="Huang1996_MAPK_ultrasens">
+        <notes/>
+        <annotation/>
+        <listOfUnitDefinitions>
+            <unitDefinition id="substance" metaid="metaid_0000046" name="micromole">
+                <listOfUnits>
+                    <unit kind="mole" scale="-6"/>
+                </listOfUnits>
+            </unitDefinition>
+        </listOfUnitDefinitions>
+    </model>
+</sbml>
